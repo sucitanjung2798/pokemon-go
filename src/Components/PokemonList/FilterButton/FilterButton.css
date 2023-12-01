@@ -1,0 +1,224 @@
+/* .filterButton {
+  position: absolute;
+  right: 35px;
+  top: 70px;
+} */
+
+.hamburger {
+  padding: 12px 2px;
+  display: inline-block;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.hamburger:hover {
+  opacity: 0.7;
+}
+
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: #333;
+}
+
+.hamburger-box {
+  width: 32px;
+  height: 14px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  top: 50%;
+  margin-top: -2px;
+  display: block;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 25px;
+  height: 2px;
+  border-radius: 4px;
+  background-color: #333;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: "";
+  display: block;
+}
+
+.hamburger-inner::before {
+  top: -10px;
+}
+
+.hamburger-inner::after {
+  bottom: -10px;
+}
+
+/* * Emphatic */
+
+.hamburger--emphatic {
+  overflow: hidden;
+}
+
+.hamburger--emphatic .hamburger-inner {
+  transition: background-color 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic .hamburger-inner::before {
+  left: 0;
+  transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    top 0.05s 0.125s linear, left 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic .hamburger-inner::after {
+  top: 10px;
+  right: 0;
+  transition: transform 0.125s cubic-bezier(0.6, 0.04, 0.98, 0.335),
+    top 0.05s 0.125s linear, right 0.125s 0.175s ease-in;
+}
+
+.hamburger--emphatic.is-active .hamburger-inner {
+  transition-delay: 0s;
+  transition-timing-function: ease-out;
+  background-color: transparent !important;
+}
+
+.hamburger--emphatic.is-active .hamburger-inner::before {
+  left: -80px;
+  top: -80px;
+  transform: translate3d(80px, 80px, 0) rotate(45deg);
+  transition: left 0.125s ease-out, top 0.05s 0.125s linear,
+    transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.hamburger--emphatic.is-active .hamburger-inner::after {
+  right: -80px;
+  top: -80px;
+  transform: translate3d(-80px, 80px, 0) rotate(-45deg);
+  transition: right 0.125s ease-out, top 0.05s 0.125s linear,
+    transform 0.125s 0.175s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.generationContainer {
+  position: fixed;
+  background-color: rgba(000, 000, 000, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transform: scale(0);
+}
+
+.generationContainer.active {
+  transform: scale(1);
+}
+
+.generationSection {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 250px;
+  background-color: #fff;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 10px 4px 10px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+@media screen and (min-width: 768px) {
+  .generationSection {
+    height: 320px;
+  }
+}
+
+.generationSection::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  border-radius: 8px;
+  height: 1.5px;
+  width: 20%;
+  background-color: #d4d4d4;
+}
+
+@media screen and (min-wdith: 768px) {
+  .generationSection article {
+    padding: 0 20px;
+  }
+}
+/* .generationSection article::-webkit-scrollbar {
+    display: none;
+} */
+
+.generationCard {
+  position: relative;
+  overflow: hidden;
+  height: 95px;
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+
+  padding: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.generationCard:hover,
+.generationCard:focus {
+  transform: scale(0.9);
+}
+
+.generationPoke {
+  opacity: 0.15;
+  width: 70px;
+  position: absolute;
+  right: -6px;
+  bottom: -10px;
+}
+
+@media (min-width: 768px) {
+  .generationSection::before {
+    width: 8%;
+  }
+
+  .generationCard {
+    height: 125px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .generationCard {
+    height: 145px;
+  }
+}

@@ -1,3 +1,4 @@
+import axios from "axios";
 const baseUrl = "https://pokeapi.co/api/v2/pokemon";
 
 export const Colors = {
@@ -40,5 +41,26 @@ export const getPokemonData = async (url) => {
     return data;
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getDetailPokemon = async (pokemon) => {
+  try {
+    let url = `${baseUrl}/${pokemon}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getPokemonSpecies = async (url) => {
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
   }
 };
